@@ -1,0 +1,10 @@
+C:\Users\sheri\source\repos\NPServer\NPServer\bin\Debug\NPServer.exe.config
+C:\Users\sheri\source\repos\NPServer\NPServer\bin\Debug\NPServer.exe
+C:\Users\sheri\source\repos\NPServer\NPServer\bin\Debug\NPServer.pdb
+C:\Users\sheri\source\repos\NPServer\NPServer\obj\Debug\NPServer.csproj.AssemblyReference.cache
+C:\Users\sheri\source\repos\NPServer\NPServer\obj\Debug\NPServer.Form1.resources
+C:\Users\sheri\source\repos\NPServer\NPServer\obj\Debug\NPServer.Properties.Resources.resources
+C:\Users\sheri\source\repos\NPServer\NPServer\obj\Debug\NPServer.csproj.GenerateResource.cache
+C:\Users\sheri\source\repos\NPServer\NPServer\obj\Debug\NPServer.csproj.CoreCompileInputs.cache
+C:\Users\sheri\source\repos\NPServer\NPServer\obj\Debug\NPServer.exe
+C:\Users\sheri\source\repos\NPServer\NPServer\obj\Debug\NPServer.pdb
