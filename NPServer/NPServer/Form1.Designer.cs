@@ -35,6 +35,8 @@
             this.ImageShowBox = new System.Windows.Forms.PictureBox();
             this.BrowseButton = new System.Windows.Forms.Button();
             this.SendButton = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.sendOptionComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ImageShowBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,11 +109,30 @@
             this.SendButton.UseVisualStyleBackColor = true;
             this.SendButton.Click += new System.EventHandler(this.SendButton_Click);
             // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(619, 23);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(203, 251);
+            this.listView1.TabIndex = 16;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // sendOptionComboBox
+            // 
+            this.sendOptionComboBox.FormattingEnabled = true;
+            this.sendOptionComboBox.Location = new System.Drawing.Point(968, 274);
+            this.sendOptionComboBox.Name = "sendOptionComboBox";
+            this.sendOptionComboBox.Size = new System.Drawing.Size(121, 24);
+            this.sendOptionComboBox.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1351, 560);
+            this.Controls.Add(this.sendOptionComboBox);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.SendButton);
             this.Controls.Add(this.BrowseButton);
             this.Controls.Add(this.ImageShowBox);
@@ -137,6 +158,8 @@
         private System.Windows.Forms.PictureBox ImageShowBox;
         private System.Windows.Forms.Button BrowseButton;
         private System.Windows.Forms.Button SendButton;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ComboBox sendOptionComboBox;
     }
 }
 
