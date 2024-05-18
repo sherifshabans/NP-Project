@@ -37,6 +37,7 @@
             this.SendButton = new System.Windows.Forms.Button();
             this.sendOptionComboBox = new System.Windows.Forms.ComboBox();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.ImageShowBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,6 +161,7 @@
         private System.Windows.Forms.Button SendButton;
         private System.Windows.Forms.ComboBox sendOptionComboBox;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }
 

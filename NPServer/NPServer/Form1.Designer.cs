@@ -37,21 +37,23 @@
             this.SendButton = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.sendOptionComboBox = new System.Windows.Forms.ComboBox();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.ImageShowBox)).BeginInit();
             this.SuspendLayout();
             // 
             // ChatArea
             // 
-            this.ChatArea.Location = new System.Drawing.Point(28, 23);
+            this.ChatArea.Location = new System.Drawing.Point(12, 12);
             this.ChatArea.Multiline = true;
             this.ChatArea.Name = "ChatArea";
-            this.ChatArea.Size = new System.Drawing.Size(314, 52);
+            this.ChatArea.Size = new System.Drawing.Size(314, 147);
             this.ChatArea.TabIndex = 9;
             this.ChatArea.TextChanged += new System.EventHandler(this.ChatArea_TextChanged);
             // 
             // MessageArea
             // 
-            this.MessageArea.Location = new System.Drawing.Point(28, 102);
+            this.MessageArea.Location = new System.Drawing.Point(12, 165);
             this.MessageArea.Multiline = true;
             this.MessageArea.Name = "MessageArea";
             this.MessageArea.Size = new System.Drawing.Size(314, 63);
@@ -83,11 +85,12 @@
             // ImageShowBox
             // 
             this.ImageShowBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ImageShowBox.Location = new System.Drawing.Point(28, 204);
+            this.ImageShowBox.Location = new System.Drawing.Point(12, 244);
             this.ImageShowBox.Name = "ImageShowBox";
             this.ImageShowBox.Size = new System.Drawing.Size(314, 254);
             this.ImageShowBox.TabIndex = 13;
             this.ImageShowBox.TabStop = false;
+            this.ImageShowBox.Click += new System.EventHandler(this.ImageShowBox_Click);
             // 
             // BrowseButton
             // 
@@ -126,11 +129,23 @@
             this.sendOptionComboBox.Size = new System.Drawing.Size(121, 24);
             this.sendOptionComboBox.TabIndex = 17;
             // 
+            // folderBrowserDialog
+            // 
+            this.folderBrowserDialog.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(561, 287);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1351, 560);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.sendOptionComboBox);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.SendButton);
@@ -160,6 +175,8 @@
         private System.Windows.Forms.Button SendButton;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ComboBox sendOptionComboBox;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 

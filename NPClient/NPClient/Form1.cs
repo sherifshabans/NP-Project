@@ -56,136 +56,38 @@ namespace NPClient
 
                     if (command == "DIRECTORY")
                     {
-                        // Receive directory name
-                        byte[] dirNameLengthBuffer = new byte[4];
-                        await ns.ReadAsync(dirNameLengthBuffer, 0, dirNameLengthBuffer.Length);
-                        int dirNameLength = BitConverter.ToInt32(dirNameLengthBuffer, 0);
-
-                        byte[] dirNameBuffer = new byte[dirNameLength];
-                        await ns.ReadAsync(dirNameBuffer, 0, dirNameBuffer.Length);
-                        string dirName = Encoding.UTF8.GetString(dirNameBuffer);
-
-                        // Receive the number of files
-                        byte[] fileCountBuffer = new byte[4];
-                        await ns.ReadAsync(fileCountBuffer, 0, fileCountBuffer.Length);
-                        int fileCount = BitConverter.ToInt32(fileCountBuffer, 0);
-
-                        // Create directory
-                        string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dirName);
-                        Directory.CreateDirectory(dirPath);
-
-                        // Receive each file
-                        for (int i = 0; i < fileCount; i++)
-                        {
-                            // Receive file name
-                            byte[] fileNameLengthBuffer = new byte[4];
-                            await ns.ReadAsync(fileNameLengthBuffer, 0, fileNameLengthBuffer.Length);
-                            int fileNameLength = BitConverter.ToInt32(fileNameLengthBuffer, 0);
-
-                            byte[] fileNameBuffer = new byte[fileNameLength];
-                            await ns.ReadAsync(fileNameBuffer, 0, fileNameBuffer.Length);
-                            string fileName = Encoding.UTF8.GetString(fileNameBuffer);
-
-                            // Receive file size
-                            byte[] sizeData = new byte[4];
-                            await ns.ReadAsync(sizeData, 0, sizeData.Length);
-                            int fileSize = BitConverter.ToInt32(sizeData, 0);
-
-                            // Receive file data
-                            byte[] fileData = new byte[fileSize];
-                            int totalBytesRead = 0;
-
-                            while (totalBytesRead < fileSize)
-                            {
-                                int bytesRead = await ns.ReadAsync(fileData, totalBytesRead, fileSize - totalBytesRead);
-                                totalBytesRead += bytesRead;
-                            }
-
-                            // Save file
-                            string filePath = Path.Combine(dirPath, fileName);
-                            File.WriteAllBytes(filePath, fileData);
-                        }
-
-                        MessageBox.Show($"Directory {dirName} received and saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DisplayDirectoryFiles(dirPath);
+                         ReceiveDirectory();
                     }
                     else if (command == "FILE")
                     {
-                        // Receive file name
-                        byte[] fileNameLengthBuffer = new byte[4];
-                        await ns.ReadAsync(fileNameLengthBuffer, 0, fileNameLengthBuffer.Length);
-                        int fileNameLength = BitConverter.ToInt32(fileNameLengthBuffer, 0);
-
-                        byte[] fileNameBuffer = new byte[fileNameLength];
-                        await ns.ReadAsync(fileNameBuffer, 0, fileNameBuffer.Length);
-                        string fileName = Encoding.UTF8.GetString(fileNameBuffer);
-
-                        // Array to recieve the size of the incoming image.
-                        byte[] sizeData = new byte[4];
-
-                        // Read the size asynchronously.
-                        await ns.ReadAsync(sizeData, 0, sizeData.Length);
-
-                        // Convert the size to integer form.
-                        int imageSize = BitConverter.ToInt32(sizeData, 0);
-
-                        // Array to recieve the image data.
-                        byte[] imageData = new byte[imageSize];
-
-                        // Variable to track the bytes read from the network stream.
-                        int totalBytesRead = 0;
-
-                        // Loop until all image data are read.
-                        while (totalBytesRead < imageSize)
-                        {
-                            // Read image data asynchronously.
-                            int bytesRead = await ns.ReadAsync(imageData, totalBytesRead, imageSize - totalBytesRead);
-
-                            // Increment the total bytes read.
-                            totalBytesRead += bytesRead;
-                        }
-
-
-                        //  string savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
-                        string savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
-                        File.WriteAllBytes(savePath, imageData);
-
-                        // Display the image in the PictureBox
-                        using (MemoryStream memoryStream = new MemoryStream(imageData))
-                        {
-                            //      ImageShowBox.Image = Image.FromStream(memoryStream);
-                        }
-
-                        MessageBox.Show("Image received and displayed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
+                         ReceiveFile();
                     }
                     else
                     {
-                        string tmp = "";
-                        while (true)
-                        {
-                            tmp = await sr.ReadLineAsync();
-                            if (string.IsNullOrEmpty(tmp))
-                            {
-                                break; // Exit the loop when there are no more lines to read
-                            }
-                            tmp = "Server: " + tmp;
-                            Invoke(new Action(() =>
-                            {
-                                ChatArea.Text += tmp;
-                                ChatArea.AppendText(Environment.NewLine);
-                            }));
-                        }
-                    }
 
+                        await  ReceiveMessages();
+                        //string tmp = "";
+                        //while (true)
+                        //{
+                        //    if (string.IsNullOrEmpty(command))
+                        //    {
+                        //        break; // Exit the loop when there are no more lines to read
+                        //    }
+                        //    command = "Server: " + command;
+                        //    Invoke(new Action(() =>
+                        //    {
+                        //        ChatArea.Text += command;
+                        //        ChatArea.AppendText(Environment.NewLine);
+                        //    }));
+                        //    command = await sr.ReadLineAsync();
+                        //}
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("An error occurred while receiving data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
         private void DisplayDirectoryFiles(string dirPath)
         {
@@ -225,40 +127,57 @@ namespace NPClient
        {
             if (sendOptionComboBox.SelectedItem.ToString() == "Send Message")
             {
-                SendMessage();
+             await   SendMessage();
             }
             else if (sendOptionComboBox.SelectedItem.ToString() == "Send File")
             {
-                SendFile();
+
+              await  SendFile();
             }
             else if (sendOptionComboBox.SelectedItem.ToString() == "Send Directory")
             {
-                SendDirectory();
+              await  SendDirectory();
             }
         }
-        private async void SendMessage()
+        private async Task SendMessage()
         {
-
-
-            
-            // send message 
             string tmp = MessageArea.Text;
-            sw.WriteLine(tmp);
-            sw.Flush();
-            MessageArea.Text = "";
-            if (string.IsNullOrEmpty(tmp))
+            if (!string.IsNullOrEmpty(tmp))
             {
+                // Send message
+                sw.WriteLine(tmp);
+                sw.Flush();
+                MessageArea.Text = "";
 
-
+                // Append sent message to ChatArea
                 tmp = "Me (Client): " + tmp;
-                ChatArea.Text += tmp;
-                ChatArea.AppendText(Environment.NewLine);
-
+                AppendToChatArea(tmp);
             }
         }
 
 
-        private async void SendFile()
+        private async Task ReceiveMessages()
+        {
+            while (true)
+            {
+                try
+                {
+                    string tmp = await Task.Run(() => sr.ReadLine());
+                    if (tmp != null)
+                    {
+                        tmp = "Server: " + tmp;
+                        AppendToChatArea(tmp);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while receiving data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                }
+            }
+        }
+
+        private async Task SendFile()
         {
 
 
@@ -273,10 +192,11 @@ namespace NPClient
             try
 
             {
-
-
                 sw.WriteLine("FILE");
                 sw.Flush();
+
+
+
 
                 // Send file name
                 string fileName = Path.GetFileName(selectedImagePath);
@@ -311,7 +231,57 @@ namespace NPClient
 
 
         }
-        private async void SendDirectory()
+        private async void ReceiveFile()
+        {
+            // Receive file name
+            byte[] fileNameLengthBuffer = new byte[4];
+            await ns.ReadAsync(fileNameLengthBuffer, 0, fileNameLengthBuffer.Length);
+            int fileNameLength = BitConverter.ToInt32(fileNameLengthBuffer, 0);
+
+            byte[] fileNameBuffer = new byte[fileNameLength];
+            await ns.ReadAsync(fileNameBuffer, 0, fileNameBuffer.Length);
+            string fileName = Encoding.UTF8.GetString(fileNameBuffer);
+
+            // Array to recieve the size of the incoming image.
+            byte[] sizeData = new byte[4];
+
+            // Read the size asynchronously.
+            await ns.ReadAsync(sizeData, 0, sizeData.Length);
+
+            // Convert the size to integer form.
+            int imageSize = BitConverter.ToInt32(sizeData, 0);
+
+            // Array to recieve the image data.
+            byte[] imageData = new byte[imageSize];
+
+            // Variable to track the bytes read from the network stream.
+            int totalBytesRead = 0;
+
+            // Loop until all image data are read.
+            while (totalBytesRead < imageSize)
+            {
+                // Read image data asynchronously.
+                int bytesRead = await ns.ReadAsync(imageData, totalBytesRead, imageSize - totalBytesRead);
+
+                // Increment the total bytes read.
+                totalBytesRead += bytesRead;
+            }
+
+
+            //  string savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), fileName);
+            string savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+            File.WriteAllBytes(savePath, imageData);
+
+            //// Display the image in the PictureBox
+            //using (MemoryStream memoryStream = new MemoryStream(imageData))
+            //{
+            //    //      ImageShowBox.Image = Image.FromStream(memoryStream);
+            //}
+
+            MessageBox.Show("File received and Saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+        private async Task SendDirectory()
         {
 
             selectedDirectoryPath = "G:\\Desktop\\photos";
@@ -324,6 +294,7 @@ namespace NPClient
 
             try
             {
+
                 sw.WriteLine("DIRECTORY");
                 sw.Flush();
 
@@ -373,8 +344,63 @@ namespace NPClient
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } 
         }
+        private async void ReceiveDirectory()
+        {
 
-                private void BrowseButton_Click(object sender, EventArgs e)
+            // Receive directory name
+            byte[] dirNameLengthBuffer = new byte[4];
+            await ns.ReadAsync(dirNameLengthBuffer, 0, dirNameLengthBuffer.Length);
+            int dirNameLength = BitConverter.ToInt32(dirNameLengthBuffer, 0);
+
+            byte[] dirNameBuffer = new byte[dirNameLength];
+            await ns.ReadAsync(dirNameBuffer, 0, dirNameBuffer.Length);
+            string dirName = Encoding.UTF8.GetString(dirNameBuffer);
+
+            // Receive the number of files
+            byte[] fileCountBuffer = new byte[4];
+            await ns.ReadAsync(fileCountBuffer, 0, fileCountBuffer.Length);
+            int fileCount = BitConverter.ToInt32(fileCountBuffer, 0);
+
+            // Create directory
+            string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, dirName);
+            Directory.CreateDirectory(dirPath);
+
+            // Receive each file
+            for (int i = 0; i < fileCount; i++)
+            {
+                // Receive file name
+                byte[] fileNameLengthBuffer = new byte[4];
+                await ns.ReadAsync(fileNameLengthBuffer, 0, fileNameLengthBuffer.Length);
+                int fileNameLength = BitConverter.ToInt32(fileNameLengthBuffer, 0);
+
+                byte[] fileNameBuffer = new byte[fileNameLength];
+                await ns.ReadAsync(fileNameBuffer, 0, fileNameBuffer.Length);
+                string fileName = Encoding.UTF8.GetString(fileNameBuffer);
+
+                // Receive file size
+                byte[] sizeData = new byte[4];
+                await ns.ReadAsync(sizeData, 0, sizeData.Length);
+                int fileSize = BitConverter.ToInt32(sizeData, 0);
+
+                // Receive file data
+                byte[] fileData = new byte[fileSize];
+                int totalBytesRead = 0;
+
+                while (totalBytesRead < fileSize)
+                {
+                    int bytesRead = await ns.ReadAsync(fileData, totalBytesRead, fileSize - totalBytesRead);
+                    totalBytesRead += bytesRead;
+                }
+
+                // Save file
+                string filePath = Path.Combine(dirPath, fileName);
+                File.WriteAllBytes(filePath, fileData);
+            }
+
+            MessageBox.Show($"Directory {dirName} received and saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DisplayDirectoryFiles(dirPath);
+        }
+        private void BrowseButton_Click(object sender, EventArgs e)
         {
             // Create instance of the OpenFileDialog class.
           //  // https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.openfiledialog?view=windowsdesktop-8.0
@@ -405,5 +431,28 @@ namespace NPClient
               //  ImageShowBox.Image = new System.Drawing.Bitmap(openFileDialog.FileName, false);
             }
         }
+
+        private void AppendToChatArea(string message)
+        {
+            if (ChatArea.InvokeRequired)
+            {
+                ChatArea.Invoke(new Action<string>(AppendToChatArea), new object[] { message });
+            }
+            else
+            {
+                ChatArea.AppendText(message + Environment.NewLine);
+            }
+        }
+        private void SelectDirectoryButton_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    selectedDirectoryPath = folderBrowserDialog.SelectedPath;
+                }
+            }
+        }
+
     }
 }
