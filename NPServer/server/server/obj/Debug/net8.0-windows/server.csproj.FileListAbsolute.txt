@@ -1,0 +1,47 @@
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\bin\Debug\net8.0-windows\server.exe
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\bin\Debug\net8.0-windows\server.deps.json
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\bin\Debug\net8.0-windows\server.runtimeconfig.json
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\bin\Debug\net8.0-windows\server.dll
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\bin\Debug\net8.0-windows\server.pdb
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.Form1.resources
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.csproj.GenerateResource.cache
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.GeneratedMSBuildEditorConfig.editorconfig
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.AssemblyInfoInputs.cache
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.AssemblyInfo.cs
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.csproj.CoreCompileInputs.cache
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.sourcelink.json
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.dll
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\refint\server.dll
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.pdb
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.genruntimeconfig.cache
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\ref\server.dll
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\bin\Debug\net8.0-windows\OpenCvSharp.dll
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\bin\Debug\net8.0-windows\runtimes\win-x64\native\OpenCvSharpExtern.dll
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\bin\Debug\net8.0-windows\runtimes\win-x64\native\opencv_videoio_ffmpeg490_64.dll
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\bin\Debug\net8.0-windows\runtimes\win-x86\native\OpenCvSharpExtern.dll
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\bin\Debug\net8.0-windows\runtimes\win-x86\native\opencv_videoio_ffmpeg490.dll
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.csproj.AssemblyReference.cache
+D:\Collage\8th\Network Programming\Project\GUI app\server\server\obj\Debug\net8.0-windows\server.csproj.Up2Date
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\bin\Debug\net8.0-windows\server.exe
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\bin\Debug\net8.0-windows\server.deps.json
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\bin\Debug\net8.0-windows\server.runtimeconfig.json
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\bin\Debug\net8.0-windows\server.dll
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\bin\Debug\net8.0-windows\server.pdb
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\bin\Debug\net8.0-windows\OpenCvSharp.dll
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\bin\Debug\net8.0-windows\runtimes\win-x64\native\OpenCvSharpExtern.dll
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\bin\Debug\net8.0-windows\runtimes\win-x64\native\opencv_videoio_ffmpeg490_64.dll
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\bin\Debug\net8.0-windows\runtimes\win-x86\native\OpenCvSharpExtern.dll
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\bin\Debug\net8.0-windows\runtimes\win-x86\native\opencv_videoio_ffmpeg490.dll
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\server.csproj.AssemblyReference.cache
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\server.Form1.resources
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\server.csproj.GenerateResource.cache
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\server.AssemblyInfoInputs.cache
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\server.AssemblyInfo.cs
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\server.csproj.CoreCompileInputs.cache
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\server.csproj.Up2Date
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\server.dll
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\refint\server.dll
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\server.pdb
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\server.genruntimeconfig.cache
+C:\Users\sheri\source\repos\Project2\GUI app\server\server\obj\Debug\net8.0-windows\ref\server.dll
